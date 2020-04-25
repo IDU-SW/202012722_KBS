@@ -1,0 +1,45 @@
+const fs = require('fs');
+
+class Book {
+    constructor() {
+        const data = fs.readFileSync('./model/data.json');
+        this.books = JSON.parse(data)
+    }
+
+    // Promise 예제
+    getBookList() {
+        if (this.books) {
+            return this.books;
+        }
+        else {
+            return [];
+        }
+    }
+
+    addBook(title, director, year, synopsis) {
+        return new Promise((resolve, reject) => {
+            let last = this.books[this.books.length - 1];
+            let index = last.index + 1;
+
+            let newBook = {index, title, director, year, synopsis};
+            this.books.push(newBook);
+
+            resolve(newBook);
+        });
+    }
+
+    // Promise - Reject
+    getBookDetail(bookIndex) {
+        return new Promise((resolve, reject) => {
+            for (var book of this.books ) {
+                if ( book.index == bookIndex ) {
+                    resolve(book);
+                    return;
+                }
+            }
+            reject({msg:'Can not find book', code:404});
+        });
+    }
+}
+
+module.exports = new Book();
