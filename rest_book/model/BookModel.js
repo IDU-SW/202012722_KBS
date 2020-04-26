@@ -6,13 +6,15 @@ class Book {
         this.books = JSON.parse(data)
     }
 
-    putUpdateBook(index, title, writer, year, summary) {
+    putUpdateBook(index, title, writer, year, summary) {        
         return new Promise((resolve, reject) => {
+
             let id = Number(index);
-            let newBook = {iindex, title, writer, year, summary};
+            let newBook = {index, title, writer, year, summary};            
             for (var book of this.books ) {
                 if ( book.index == id ) {
-                    this.books.splice(index, 1, newBook); // id번의 내용 1개 삭제 후 newBook 내용 새로 추가
+                    this.books.splice(index, 1, newBook); 
+                    // index번의 내용 1개 삭제 후 newBook 내용 새로 추가
                     resolve(newBook);
                     return;
                 }
