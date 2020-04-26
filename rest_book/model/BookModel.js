@@ -6,6 +6,20 @@ class Book {
         this.books = JSON.parse(data)
     }
 
+    putUpdateBook(index, title, writer, year, summary) {
+        return new Promise((resolve, reject) => {
+            let id = Number(index);
+            let newBook = {iindex, title, writer, year, summary};
+            for (var book of this.books ) {
+                if ( book.index == id ) {
+                    this.books.splice(index, 1, newBook); // id번의 내용 1개 삭제 후 newBook 내용 새로 추가
+                    resolve(newBook);
+                    return;
+                }
+            }
+        });
+    }
+
     // Promise 예제
     getBookList() {
         if (this.books) {
@@ -14,6 +28,19 @@ class Book {
         else {
             return [];
         }
+    }
+
+    deleteBookData(bookIndex) {
+        return new Promise((resolve, reject) => {
+            for (var book of this.books ) {
+                if ( book.index == bookIndex ) {
+                    this.books.pop(book);
+                    resolve(book);
+                    return;
+                }
+            }
+            reject({msg:'Can not find book', code:404});
+        });
     }
 
     addBook(title, writer, year, summary) {
@@ -32,7 +59,7 @@ class Book {
     getBookDetail(bookIndex) {
         return new Promise((resolve, reject) => {
             for (var book of this.books ) {
-                if ( book.index == bookIndex ) {
+                if ( book.index == bookIndex ) {                
                     resolve(book);
                     return;
                 }
