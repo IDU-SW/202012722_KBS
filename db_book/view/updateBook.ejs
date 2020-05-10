@@ -1,0 +1,18 @@
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <title>KBS_Book</title>
+</head>
+<body>
+    <h1><a href = "/books/"><%= list %></h1></a>
+    <ul>
+        <form action="/books/<%=info.index%>?_method=PUT" method="post">
+           <li> 제목 <input type="text" name="title" id="title" size="20" value="<%=info.title %>" > </li>
+           <li>작가 <input type="text" name="writer" id="writer" size="20" value="<%=info.writer %>" > </li>
+            <li> 발행 년도 <input type="text" name="year" id="year" size="20" value="<%=info.year %>" > </li>
+            <li>줄거리 <input type="text" name="summary" id="summary" size="20" value="<%=info.summary %>" > </li>
+                <input type="submit" value="저장하기">
+        </form>
+    </ul>
+</body>
+</html>

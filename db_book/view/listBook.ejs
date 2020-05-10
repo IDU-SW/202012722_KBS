@@ -1,0 +1,18 @@
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <title>KBS_Book</title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <h2>현재 총 :   <%= count %>  권</h2>
+    <ul>
+        <% list.forEach(function(book) { %>
+            <li>
+                <a href = "/books/<%=book.index %>" > <%=book.title %> </a>
+            </li>
+        <% }) %>        
+    </ul>
+    <button type="button" > <a href = "/books/add/a" >추가하기</a> </button>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+    "host": "localhost",
+    "user": "root",
+    "password": "cometrue",
+    "port": 3307,
+    "database": "example"
+ }
