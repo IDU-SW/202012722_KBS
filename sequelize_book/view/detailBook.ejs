@@ -1,0 +1,20 @@
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <title>KBS_Book</title>
+</head>
+<body>
+    <h1><a href = "/books/"><%= title %></h1></a>
+    <ul>        
+        <li>제목 : <%=info.title %></li>
+        <li>작가 : <%=info.writer %></li>
+        <li>발행 : <%=info.year %></li>
+        <li>줄거리 : <%=info.summary %></li>        
+    </ul>
+    <form action="/books/edit/<%=info.index %>?_method=PUT" method="post">
+        <button type="submit">수정 </button>    
+        <button type="submit" formaction="/books/<%=info.index %>?_method=DELETE" formmethod="POST">
+            삭제</button>
+    </form>
+</body>
+</html>
